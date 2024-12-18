@@ -1,3 +1,4 @@
 data/*.txt
 .DS_Store
 .Rproj.user
+grams
