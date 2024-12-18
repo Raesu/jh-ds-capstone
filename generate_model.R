@@ -65,20 +65,49 @@ str(ngram3)
 
 dt <- data.table(ngram3)
 
-x <- ngram3[1:5, query := strsplit(feature, " [^ ]+$")][1:5,]
+dt2 <- ngram3[, query := strsplit(feature, " [^ ]+$")]
 
-k <- x[, predict := sub('.* (.*)$','\\1', feature)]
+dt2[1:5,]
 
-library(data.table)
+dt3 <- dt2[, predict := sub('.* (.*)$','\\1', feature)]
 
-for (i in 1:5) {
-  name <- stringr::str_c('grams/', i, 'gram.csv')
-  print(stringr::str_c('Reading ', i, 'gram.csv...'))
-  ngram <- read_csv(name)
-  print(stringr::str_c('Writing ', i, 'gram.csv...'))
-  ngram |> write_rds(stringr::str_c('grams/', i, 'gram.rds'))
-}
+dt3[1:5,]
 
+dt3[query == 'mean the',]
 
+dt3[query == 'me the',][1:30,]
 
+dt3[query == 'but the' & predict %in% c('players','referees','defense','crowd')]
+
+dt3[query == 'at the' & predict %in% c('mall','movies','grocery','beach')]
+
+dt3[query == 'on my' & predict %in% c('way','phone','horse','motorcycle')]
+
+dt3[query == 'quite some' & predict %in% c('years','thing','time','weeks')]
+
+dt3[query == 'his little' & predict %in% c('ears','toes','fingers','eyes')]
+
+dt3[query == 'during the' & predict %in% c('sad','hard','bad','worse')]
+
+dt3[query == 'must be' & predict %in% c('insane','asleep','insensitive','callous')]
+
+dt3[query == "and i'd" & predict %in% c('sleep','give','die','eat')][1:30]
+
+dt3[query == 'me about',]
+
+dt3[query == 'monkeys this']
+
+dt3[query == 'reduce your']
+
+dt3[query == 'take a' & predict %in% c('picture','look','walk','minute')]
+
+dt3[query == 'settle the']
+
+dt3[query == 'in each' & predict %in% c('toe','hand','arm','finger')]
+
+dt3[query == 'to the' & predict %in% c('side','top','center','middle')]
+
+dt3[query == 'from playing']
+
+dt3[query == "adam sandler's"]
 
