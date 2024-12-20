@@ -8,21 +8,34 @@
 #
 
 library(shiny)
+library(data.table)
 
 # Define server logic required to draw a histogram
 function(input, output, session) {
+  
+  ngrams <- reactive({
+    print('loading data set...')
+    fread('3gramOver1.csv')
+  })
+  
+  output$output1 <- renderText({
 
-    output$distPlot <- renderPlot({
-
-        # generate bins based on input$bins from ui.R
-        x    <- faithful[, 2]
-        bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-        # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white',
-             xlab = 'Waiting time to next eruption (in mins)',
-             main = 'Histogram of waiting times')
-
-    })
-
+    str <- input$input1
+    if (is.na(str) | stringr::str_length(str) < 1) {
+      return('Waiting for input...')
+    }
+    
+    last2 <- str |> stringr::str_extract('[^ ]* [^ ]*$')
+    
+    if (is.na(last2)) {
+      return('Invalid input - we need at least 2 words!')
+    }
+    
+    pred <- ngrams()[query == last2, predict][1]
+    return(pred)
+  })
+  
+    # renderText({ input$text })
 }
+
+

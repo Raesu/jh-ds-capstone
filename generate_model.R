@@ -60,8 +60,18 @@ generatePred <- function(inputFile, thresh = 1L) {
   fwrite(nGram, paste0(sub('.csv', '', inputFile), 'Pred.csv'))
 }
 
-ngram3 <- fread('grams/3gram.csv')
-str(ngram3)
+ngram3 <- fread('JHU-Swiftkey-Capstone/3gramOver1.csv')
+ngram3[, .(count = .N), by = frequency > 1][]
+
+
+ngram3[1:3]
+
+
+nngram3 <- ngram3[, query := strsplit(feature, " [^ ]+$")]
+ngram3 <- nngram3[, predict := sub('.* (.*)$','\\1', feature)]
+
+ngram3[,.(query, predict, frequency)] |>
+  fwrite('JHU-SwiftKey-Capstone/3gramOver1.csv')
 
 dt <- data.table(ngram3)
 
@@ -110,4 +120,11 @@ dt3[query == 'to the' & predict %in% c('side','top','center','middle')]
 dt3[query == 'from playing']
 
 dt3[query == "adam sandler's"]
+
+h <- 'query'
+
+h |> stringr::str_extract('[^ ]* [^ ]*$')
+
+ngram3[query == 'that is', predict][1]
+
 
