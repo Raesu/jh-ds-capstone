@@ -4,21 +4,29 @@ format: revealjs
 editor: visual
 ---
 
-## Quarto
+## Capstone Introduction
+- The final project in this specialization was to create an n-gram prediction model that could be used on a mobile device to provide autocomplete functionality.
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+- The model was trained by taking in millions of lines of text from blogs, news articles, and tweets. Punctuation was removed but there was no further treatment to the source data.
 
-## Bullets
+- 2, 3, 4, 5, and 6-gram training sets were built and frequency tables were created to identify the most common typing patters. This frequency table is then used to predict upcoming words.
 
-When you click the **Render** button a document will be generated that includes:
+## Shiny App
+- My shiny app is basic and uses a 3gram model to remain lightweight. There is a text input and text output.
 
--   Content authored with markdown
--   Output from executable code
+- On startup, a 3gram CSV file is read in (a frequency table). When text is written into the input box, a function searches for the last 2 words in the frequency table and provides a 3rd.
 
-## Code
+- If no matches are found or if there is not enough input text, a prompt is shown on the dashboard.
 
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+## Opportunities for Improvement
 
-```{r}
-1 + 1
-```
+This word frequency model approach is basic to implement and is relatively accurate, however it is not easy to adjust over time as a user uses it.
+
+Extra logic could be built to log the users written text (and corrections), and could be weighted to heavily influence the standard training data.
+
+Another approach used lately is a Recurrent Neural Network which is computationally expensive but very accurate.
+
+## References
+I have learned a ton in this class, learned a lot of `data.table` with this project, and love using R. I'm also happy to complete it!
+
+- 
