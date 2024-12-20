@@ -2,3 +2,13 @@ data/*.txt
 .DS_Store
 .Rproj.user
 grams
+*.html
+*.js
+*.css
+*.map
+*.eot
+*.ttf
+*.woff
+*.yml
+LICENSE
+*.csv

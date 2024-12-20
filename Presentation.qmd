@@ -12,6 +12,8 @@ editor: visual
 - 2, 3, 4, 5, and 6-gram training sets were built and frequency tables were created to identify the most common typing patters. This frequency table is then used to predict upcoming words.
 
 ## Shiny App
+[Link to App](https://raesu.shinyapps.io/JHU-SwiftKey-Capstone/)
+
 - My shiny app is basic and uses a 3gram model to remain lightweight. There is a text input and text output.
 
 - On startup, a 3gram CSV file is read in (a frequency table). When text is written into the input box, a function searches for the last 2 words in the frequency table and provides a 3rd.
@@ -29,4 +31,4 @@ Another approach used lately is a Recurrent Neural Network which is computationa
 ## References
 I have learned a ton in this class, learned a lot of `data.table` with this project, and love using R. I'm also happy to complete it!
 
-- 
+- [Link to GitHub repo](https://github.com/Raesu/jh-ds-capstone)

@@ -1,0 +1,12 @@
+name: JHU-SwiftKey-Capstone
+title: JHU-SwiftKey-Capstone
+username: raesu
+account: raesu
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13626845
+bundleId: 9549277
+url: https://raesu.shinyapps.io/JHU-SwiftKey-Capstone/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
